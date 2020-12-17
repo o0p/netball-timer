@@ -34,6 +34,7 @@ function counter(player, opponent) {
         player.btn.disabled = true;
         opponent.btn.disabled = true;
         gameOver = true;
+        stopTimer();
     }
 }
 
@@ -48,6 +49,9 @@ function counterMinus(player, opponent) {
                 player.counter.textContent = player.score;
             }
             if (gameOver){
+                startTimer();
+                player.score--;
+                player.counter.textContent = player.score;
                 gameOver = false;
                 player.btn.disabled = false;
                 opponent.btn.disabled = false;
@@ -71,6 +75,8 @@ function resetGame(){
     playerTwo.score = 0;
     playerOne.counter.textContent = 0;
     playerTwo.counter.textContent = 0;
+    stopTimer();
+    resetTimer();
 }
 
 //timer for Denja eba :)
@@ -133,4 +139,5 @@ function resetTimer() {
     hr = 0;
     min = 0;
     sec = 0;
+    
 }
