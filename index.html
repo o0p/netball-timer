@@ -63,17 +63,19 @@
                             </p> 
                             <h1 class="title is-1">
                                  <span class="time">
-                                0
+                                    <div id="stopwatch">
+                                        00:00:00
+                                    </div>
                             </span>
                             </h1>
                         </div>
 
 
-
+                        
                         <footer class="card-footer">
-                            <button class="is-primary button card-footer-item is-large start">START</button>
-                            <button class="is-warning button card-footer-item is-large pause">PAUSE</button>
-                            <button class="is-danger button card-footer-item is-large stop">STOP</button>
+                            <button class="is-primary button card-footer-item is-large start" onclick="startTimer()">START</button>
+                            <button class="is-danger button card-footer-item is-large stop" onclick="stopTimer()">STOP</button>
+                            <button class="is-warning button card-footer-item is-large reset" onclick="resetTimer()">RESET</button>
                         </footer>
 
                         <div class="break">
@@ -105,6 +107,7 @@
             </div>
         </div>
     </section>
+
 
 
     <script src="app.js"></script>
