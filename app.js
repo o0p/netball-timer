@@ -10,7 +10,7 @@ const playerTwo = {
     counter: document.querySelector('.p2score'),
     btnMinus: document.querySelector('.p2btnMin')
 }
-const reset = document.querySelector('.reset');
+const reset = document.querySelector('.resetScore');
 
 for (let i = 3; i < 22; i++){
     scorePicker.innerHTML += `<option value="${i}">${i}</option>`
@@ -73,14 +73,14 @@ function resetGame(){
     playerTwo.counter.textContent = 0;
 }
 
-//timer 
+//timer for Denja eba :)
 
 const timer = document.getElementById('stopwatch');
 
-let hr = 0;
-let min = 0;
-let sec = 0;
-let stoptime = true;
+var hr = 0;
+var min = 0;
+var sec = 0;
+var stoptime = true;
 
 function startTimer() {
   if (stoptime == true) {
@@ -129,5 +129,8 @@ function timerCycle() {
 }
 
 function resetTimer() {
-    timer.innerHTML = '00:00:00:00';
+    timer.innerHTML = '00:00:00';
+    hr = 0;
+    min = 0;
+    sec = 0;
 }
