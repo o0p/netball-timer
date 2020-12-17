@@ -1,12 +1,14 @@
 const playerOne = {
     score: 0,
     btn: document.querySelector('.p1btn'),
-    counter: document.querySelector('.p1score')
+    counter: document.querySelector('.p1score'),
+    btnMinus: document.querySelector('.p1btnMin')
 }
 const playerTwo = {
     score: 0,
     btn: document.querySelector('.p2btn'),
-    counter: document.querySelector('.p2score')
+    counter: document.querySelector('.p2score'),
+    btnMinus: document.querySelector('.p2btnMin')
 }
 const reset = document.querySelector('.reset');
 
@@ -32,6 +34,16 @@ function counter(player, opponent) {
         player.btn.disabled = true;
         opponent.btn.disabled = true;
         gameOver = true;
+    }
+}
+
+playerOne.btnMinus.addEventListener('click', ()=>{counterMinus(playerOne, playerTwo)});
+playerTwo.btnMinus.addEventListener('click', ()=>{counterMinus(playerTwo, playerOne)});
+
+function counterMinus(player) {
+    if (!gameOver) {
+        player.score--;
+        player.counter.textContent = player.score;
     }
 }
 
