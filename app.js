@@ -40,12 +40,26 @@ function counter(player, opponent) {
 playerOne.btnMinus.addEventListener('click', ()=>{counterMinus(playerOne, playerTwo)});
 playerTwo.btnMinus.addEventListener('click', ()=>{counterMinus(playerTwo, playerOne)});
 
-function counterMinus(player) {
-    if (!gameOver) {
-        player.score--;
-        player.counter.textContent = player.score;
+function counterMinus(player, opponent) {
+    
+        if (player.score != 0) {
+            if (!gameOver) {
+                player.score--;
+                player.counter.textContent = player.score;
+            }
+            if (gameOver){
+                gameOver = false;
+                player.btn.disabled = false;
+                opponent.btn.disabled = false;
+                player.counter.classList.remove('has-text-success', 'has-text-danger')
+                opponent.counter.classList.remove('has-text-success', 'has-text-danger')
+            }
+
+        }
+
     }
-}
+
+
 
 function resetGame(){
     playerOne.counter.classList.remove('has-text-success', 'has-text-danger')
