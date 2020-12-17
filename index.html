@@ -39,9 +39,7 @@
                             <div class="content">
                                 <h1 class="title is-1"> <span class="p1score">0</span> - <span class="p2score">0</span>
                                 </h1>
-                                <p class="subtitle">
-                                    Use the buttons below to keep the score
-                                </p>
+
 
                                 <label for="scorePicker" class="label is-large is-inline">Playing To</label>
                                 <div class="select is-rounded">
@@ -54,19 +52,62 @@
 
                             </div>
                         </div>
-                        <footer class="card-footer">
-                            <button class="is-primary button card-footer-item is-large p1btn">+1 Player
-                                One</button>
-                            <button class="is-info button card-footer-item is-large p2btn">+1 Player
-                                Two</button>
-                            <button class="is-danger button card-footer-item is-large reset">Reset</button>
 
+
+
+
+
+                        <div class="content">
+                            <p class="subtitle">
+                                GAME TIMER
+                            </p> 
+                            <h1 class="title is-1">
+                                 <span class="time">
+                                    <div id="stopwatch">
+                                        00:00:00
+                                    </div>
+                            </span>
+                            </h1>
+                        </div>
+
+
+                        
+                        <footer class="card-footer">
+                            <button class="is-primary button card-footer-item is-large start" onclick="startTimer()">START</button>
+                            <button class="is-danger button card-footer-item is-large stop" onclick="stopTimer()">STOP</button>
+                            <button class="is-warning button card-footer-item is-large reset" onclick="resetTimer()">RESET TIME</button>
                         </footer>
+
+                        <div class="break">
+                            Sponosred by Adidas ///
+                      </div>
+
+                        <footer class="card-footer">
+                            <button class="is-primary button card-footer-item is-large p1btn">+1 Team
+                                One</button>
+                            <button class="is-info button card-footer-item is-large p2btn">+1 Team
+                                Two</button>
+                        </footer>
+
+                        <div class="break">
+                            In memory of Makaron RIP
+                      </div>
+
+                        <footer class="card-footer">
+                            <button class="is-primary button card-footer-item is-large p1btnMin">-1 Team
+                                One</button>
+                            <button class="is-info button card-footer-item is-large p2btnMin">-1 Team
+                                Two</button>
+                            <button class="is-danger button card-footer-item is-large resetScore">Reset</button>
+                        </footer>
+
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <script src="app.js"></script>

@@ -1,14 +1,16 @@
 const playerOne = {
     score: 0,
     btn: document.querySelector('.p1btn'),
-    counter: document.querySelector('.p1score')
+    counter: document.querySelector('.p1score'),
+    btnMinus: document.querySelector('.p1btnMin')
 }
 const playerTwo = {
     score: 0,
     btn: document.querySelector('.p2btn'),
-    counter: document.querySelector('.p2score')
+    counter: document.querySelector('.p2score'),
+    btnMinus: document.querySelector('.p2btnMin')
 }
-const reset = document.querySelector('.reset');
+const reset = document.querySelector('.resetScore');
 
 for (let i = 3; i < 22; i++){
     scorePicker.innerHTML += `<option value="${i}">${i}</option>`
@@ -32,8 +34,36 @@ function counter(player, opponent) {
         player.btn.disabled = true;
         opponent.btn.disabled = true;
         gameOver = true;
+        stopTimer();
     }
 }
+
+playerOne.btnMinus.addEventListener('click', ()=>{counterMinus(playerOne, playerTwo)});
+playerTwo.btnMinus.addEventListener('click', ()=>{counterMinus(playerTwo, playerOne)});
+
+function counterMinus(player, opponent) {
+    
+        if (player.score != 0) {
+            if (!gameOver) {
+                player.score--;
+                player.counter.textContent = player.score;
+            }
+            if (gameOver){
+                startTimer();
+                player.score--;
+                player.counter.textContent = player.score;
+                gameOver = false;
+                player.btn.disabled = false;
+                opponent.btn.disabled = false;
+                player.counter.classList.remove('has-text-success', 'has-text-danger')
+                opponent.counter.classList.remove('has-text-success', 'has-text-danger')
+            }
+
+        }
+
+    }
+
+
 
 function resetGame(){
     playerOne.counter.classList.remove('has-text-success', 'has-text-danger')
@@ -45,4 +75,69 @@ function resetGame(){
     playerTwo.score = 0;
     playerOne.counter.textContent = 0;
     playerTwo.counter.textContent = 0;
+    stopTimer();
+    resetTimer();
+}
+
+//timer for Denja eba :)
+
+const timer = document.getElementById('stopwatch');
+
+var hr = 0;
+var min = 0;
+var sec = 0;
+var stoptime = true;
+
+function startTimer() {
+  if (stoptime == true) {
+        stoptime = false;
+        timerCycle();
+    }
+}
+function stopTimer() {
+  if (stoptime == false) {
+    stoptime = true;
+  }
+}
+
+function timerCycle() {
+    if (stoptime == false) {
+    sec = parseInt(sec);
+    min = parseInt(min);
+    hr = parseInt(hr);
+
+    sec = sec + 1;
+
+    if (sec == 60) {
+      min = min + 1;
+      sec = 0;
+    }
+    if (min == 60) {
+      hr = hr + 1;
+      min = 0;
+      sec = 0;
+    }
+
+    if (sec < 10 || sec == 0) {
+      sec = '0' + sec;
+    }
+    if (min < 10 || min == 0) {
+      min = '0' + min;
+    }
+    if (hr < 10 || hr == 0) {
+      hr = '0' + hr;
+    }
+
+    timer.innerHTML = hr + ':' + min + ':' + sec;
+
+    setTimeout("timerCycle()", 1000);
+  }
+}
+
+function resetTimer() {
+    timer.innerHTML = '00:00:00';
+    hr = 0;
+    min = 0;
+    sec = 0;
+    
 }
