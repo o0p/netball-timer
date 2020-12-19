@@ -79,65 +79,97 @@ function resetGame(){
     resetTimer();
 }
 
-//timer for Denja eba :)
+const startTimerBtn = document.querySelector('.start');
+const stopTimerBtn  = document.querySelector('.stop');
+const resetTimerBtn  = document.querySelector('.reset');
+startTimerBtn.dislay
+
+startTimerBtn.addEventListener('click', startTimer);
+stopTimerBtn.addEventListener('click', stopTimer);
+resetTimerBtn .addEventListener('click', resetTimer);
+
 
 const timer = document.getElementById('stopwatch');
 
-var hr = 0;
-var min = 0;
-var sec = 0;
-var stoptime = true;
+let stoptime = true;
+if(stoptime) {
+  stopTimerBtn.style.display = 'none';
+}
+
+
+
+const clock = {
+    ms: 0,
+    sec: 0,
+    min: 0,
+    hr: 0
+}
 
 function startTimer() {
-  if (stoptime == true) {
+  if (stoptime) {
         stoptime = false;
         timerCycle();
+        startTimerBtn.style.display = 'none';
+        stopTimerBtn.style.display = '';
+
+
+
     }
 }
+
 function stopTimer() {
   if (stoptime == false) {
     stoptime = true;
+    stopTimerBtn.style.display = 'none';
+    startTimerBtn.style.display = '';
   }
 }
 
+
+
+
 function timerCycle() {
     if (stoptime == false) {
-    sec = parseInt(sec);
-    min = parseInt(min);
-    hr = parseInt(hr);
+    clock.ms = parseInt(clock.ms);
+    clock.sec = parseInt(clock.sec);
+    clock.min = parseInt(clock.min);
+    clock.ms += 1;
 
-    sec = sec + 1;
-
-    if (sec == 60) {
-      min = min + 1;
-      sec = 0;
+    if (clock.ms == 100) {
+      clock.sec = + clock.sec + 1;
+      clock.ms = 0;
     }
-    if (min == 60) {
-      hr = hr + 1;
-      min = 0;
-      sec = 0;
+    if (clock.sec == 60) {
+      clock.min = clock.min + 1;
+      clock.sec = 0;
     }
-
-    if (sec < 10 || sec == 0) {
-      sec = '0' + sec;
-    }
-    if (min < 10 || min == 0) {
-      min = '0' + min;
-    }
-    if (hr < 10 || hr == 0) {
-      hr = '0' + hr;
+    if (clock.min == 60) {
+      clock.hr = clock.hr + 1;
+      clock.min = 0;
+      clock.sec = 0;
     }
 
-    timer.innerHTML = hr + ':' + min + ':' + sec;
+    if (clock.ms < 10 || clock.ms == 0) {
+      clock.ms = '0' + clock.ms;
+    }
+    if (clock.sec < 10 || clock.sec == 0) {
+      clock.sec = '0' + clock.sec;
+    }
+    if (clock.min < 10 || clock.min == 0) {
+      clock.min = '0' + clock.min;
+    }
 
-    setTimeout("timerCycle()", 1000);
+    timer.innerHTML = clock.min + ':' + clock.sec + ':' + clock.ms;
+
+    setTimeout("timerCycle()", 10);
   }
 }
 
 function resetTimer() {
     timer.innerHTML = '00:00:00';
-    hr = 0;
-    min = 0;
-    sec = 0;
-    
+    clock.hr = 0;
+    clock.min = 0;
+    clock.sec = 0;
+    clock.ms = 0;    
 }
+
