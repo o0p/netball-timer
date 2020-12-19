@@ -79,11 +79,24 @@ function resetGame(){
     resetTimer();
 }
 
-//timer for Denja eba :)
+const startTimerBtn = document.querySelector('.start');
+const stopTimerBtn  = document.querySelector('.stop');
+const resetTimerBtn  = document.querySelector('.reset');
+startTimerBtn.dislay
+
+startTimerBtn.addEventListener('click', startTimer);
+stopTimerBtn.addEventListener('click', stopTimer);
+resetTimerBtn .addEventListener('click', resetTimer);
+
 
 const timer = document.getElementById('stopwatch');
 
 let stoptime = true;
+if(stoptime) {
+  stopTimerBtn.style.display = 'none';
+}
+
+
 
 const clock = {
     ms: 0,
@@ -93,24 +106,33 @@ const clock = {
 }
 
 function startTimer() {
-  if (stoptime == true) {
+  if (stoptime) {
         stoptime = false;
         timerCycle();
+        startTimerBtn.style.display = 'none';
+        stopTimerBtn.style.display = '';
+
+
+
     }
 }
+
 function stopTimer() {
   if (stoptime == false) {
     stoptime = true;
+    stopTimerBtn.style.display = 'none';
+    startTimerBtn.style.display = '';
   }
 }
+
+
+
 
 function timerCycle() {
     if (stoptime == false) {
     clock.ms = parseInt(clock.ms);
     clock.sec = parseInt(clock.sec);
     clock.min = parseInt(clock.min);
-    clock.hr = parseInt(clock.hr);
-
     clock.ms += 1;
 
     if (clock.ms == 100) {
@@ -136,21 +158,18 @@ function timerCycle() {
     if (clock.min < 10 || clock.min == 0) {
       clock.min = '0' + clock.min;
     }
-    if (clock.hr < 10 || clock.hr == 0) {
-      clock.hr = '0' + clock.hr;
-    }
 
-    timer.innerHTML = clock.hr + ':' + clock.min + ':' + clock.sec + ':' + clock.ms;
+    timer.innerHTML = clock.min + ':' + clock.sec + ':' + clock.ms;
 
     setTimeout("timerCycle()", 10);
   }
 }
 
 function resetTimer() {
-    timer.innerHTML = '00:00:00:00';
+    timer.innerHTML = '00:00:00';
     clock.hr = 0;
     clock.min = 0;
     clock.sec = 0;
-    clock.ms = 0;
-    
+    clock.ms = 0;    
 }
+

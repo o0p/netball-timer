@@ -20,6 +20,7 @@
         font-family: Rubik;
         font-size: 4rem !important;
     }
+    
 
     #stopwatch {
         font-family: Rubik;
@@ -43,7 +44,7 @@
                         </div>
                         <header class="card-header has-text-centered ">
                             <p class="card-header-title title is-2" style="display:block">
-                                Netball Score Keeper
+                                Netball Tournemant 1/16
                             </p>
                             <span class="icon">
                                 <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -57,7 +58,7 @@
                                 </h1>
 
 
-                                <label for="scorePicker" class="label is-large is-inline">Playing To</label>
+                                <label for="scorePicker" class="label is-large is-inline">Playing to</label>
                                 <div class="select is-rounded">
                                     <select name="" id="scorePicker">
                                         <!-- <option value="1">1</option> -->
@@ -74,54 +75,61 @@
 
 
                         <div class="content">
-                            <p class="subtitle">
-                                GAME TIMER
-                            </p> 
                             <h1 class="title is-1">
-                                 <span class="time is-flex-wrap-nowrap">
+                                <span class="time is-flex-wrap-nowrap">
                                     <div id="stopwatch">
-                                        00:00:00:00
+                                        00:00:00
                                     </div>
+
+                                    <br>
+          
                             </span>
                             </h1>
                         </div>
 
 
-                        
+                        <div class="break">
+                            <p>Timer</p>
+                      </div>
                         <footer class="card-footer">
-                            <button class="is-primary button card-footer-item is-large start" onclick="startTimer()">START</button>
-                            <button class="is-danger button card-footer-item is-large stop" onclick="stopTimer()">STOP</button>
-                            <button class="is-warning button card-footer-item is-large reset" onclick="resetTimer()">RESET TIME</button>
+                            <button class="timer-start is-primary button card-footer-item start">START</button>
+                            <button class="timer-stop is-danger button card-footer-item stop">STOP</button>
+                            <button class="is-warning button card-footer-item reset">RESET TIME</button>
                         </footer>
 
                         <div class="break">
-                      <br>
+                            <p>Add points</p>
                       </div>
+                      
                       <footer class="card-footer">
-                          <button class="is-primary button card-footer-item is-large p1btn">+1 Team
+                          <button class="is-primary button card-footer-item p1btn">+1 Team
                               One</button>
-                              <button class="is-info button card-footer-item is-large p2btn">+1 Team
+                              <button class="is-info button card-footer-item  p2btn">+1 Team
                                   Two</button>
                                 </footer>
                                 
-                                <br>
+                                <p>Reduce points</p>
                         <div class="break">
                       </div>
 
-                        <footer class="card-footer">
-                            <button class="is-primary button card-footer-item is-large p1btnMin">-1 Team
-                                One</button>
-                            <button class="is-info button card-footer-item is-large p2btnMin">-1 Team
-                                Two</button>
-                            <button class="is-danger button card-footer-item is-large resetScore">Reset</button>
-                        </footer>
-
-                        
+                      
+                      <footer class="card-footer">
+                          <button class="is-primary button card-footer-item p1btnMin">-1 Team
+                              One</button>
+                              <button class="is-info button card-footer-item p2btnMin">-1 Team
+                                  Two</button>
+                                </footer>
+                                
+                                
+                                <footer class="card-footer">                      
+                                 <button class="is-danger button card-footer-item resetScore">Reset</button>
+                                 </footer>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <script src="app.js"></script>
